@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 // Authentication 
 import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut } from "firebase/auth";
-
+//Database
 import {getDatabase, onChildAdded, child, ref, push, update, set} from "firebase/database";
 
 

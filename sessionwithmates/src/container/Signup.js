@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
-import { auth, createUserWithEmailAndPassword, onAuthStateChanged,database, onChildAdded, child, ref, push, update, set  } from '../config/firebase-config'
+import { auth, createUserWithEmailAndPassword, onAuthStateChanged, database, onChildAdded, child, ref, push, update, set } from '../config/firebase-config'
 
 export default function Signup() {
 
@@ -18,27 +18,30 @@ export default function Signup() {
         let obj = {
             username,
             email,
-            password
+            password,
         }
 
-        console.log(obj);
+        if (!obj.username || !obj.email || !obj.password) {
+            alert('Please fill the input fields!')
+        }
+        else {
 
-        createUserWithEmailAndPassword(auth, obj.email, obj.password)
-            .then((userCreditials) => {
-                let uid = userCreditials.user.uid
+            createUserWithEmailAndPassword(auth, obj.email, obj.password)
+                .then((success) => {
+                    let uid = success.user.uid
+                    obj.uid = uid
+                    set(ref(database, 'users/' + uid), obj)
+                    // ...
+                })
+                .catch((error) => {
+                    // const errorCode = error.code;
+                    // const errorMessage = error.message;
 
-                set(ref(database, 'users/' + uid), obj)
-                // ...
-            })
-            .catch((error) => {
-                // const errorCode = error.code;
-                // const errorMessage = error.message;
-
-                console.log('Error', error.message);
-                // alert('Error',error.message)
-                // ..
-            });
-
+                    console.log('Error', error.message);
+                    // alert('Error',error.message)
+                    // ..
+                });
+        }
     }
 
     useEffect(() => {

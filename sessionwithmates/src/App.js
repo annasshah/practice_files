@@ -2,6 +2,8 @@ import './App.css';
 import Spinner from './assets/Spinner'
 import Buttons from './components/Button';
 import AppRouter from './config/AppRouter';
+import { Provider } from 'react-redux';
+import store from './config/redux/store'
 // import { createTheme, ThemeProvider } from '@mui/material';
 
 
@@ -20,23 +22,18 @@ function App() {
 
 
   let obj = {
-    username:'name',
-    age:6
+    username: 'name',
+    age: 6
   }
 
   return (
-    <div className="App">
+
+    <Provider store={store}>
 
       <AppRouter />
 
-      
-    {/* <Spinner /> */}
+    </Provider>
 
-    {/* <Buttons value={obj} onClick={()=>console.log(obj.username)} /> */}
-
-  
-     
-    </div>
   );
 }
 
