@@ -1,0 +1,46 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+
+:root{
+  /* --primary:'#003F63'; */
+  --primary:#012E40;
+  --secondary: #A9D0D9;
+}
+
+
+body{
+  /* background-color: #A9D0D9 !important; */
+  /* background-color: #1a1b3a !important; */
+  
+}
+.content{
+  /* background-color: #282c34; */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  /* color: white; */
+}
+
+
+.productCard{
+  transition: box-shadow 250ms linear;
+  background-color: rgba(246, 246, 246, 0.37);
+
+}
+
+.productCard:hover{
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.664);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.cardImage{
+  min-width: 250px;
+  max-width: 350px;
+  height: 250px;
+  overflow: hidden;
+}
