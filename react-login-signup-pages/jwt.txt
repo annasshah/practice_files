@@ -1,0 +1,56 @@
+access valid
+    resquest resolved
+
+access expired 
+    refresh token valid
+        renew access token
+    refresh token expired
+        logout
+
+
+access token 1 hour
+refresh token 1 day
+
+
+refresh token 1 day
+access token 1 hour
+
+after 23:30 access webpage access token expired
+refresh token 30 mins
+
+access expired 
+    refresh token valid
+        renew access token
+
+access token 1 hour
+refresh token 30 mins
+
+
+access token 30 mins
+refresh token expired
+
+
+access token expired
+refresh token expired
+
+
+access expired 
+    refresh token valid
+        renew access token
+    refresh token expired
+        logout
+
+
+
+
+
+
+upload image
+    =>image convert to base64
+
+
+
+
+
+
+

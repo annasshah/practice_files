@@ -1,0 +1,1 @@
+export const SAFE_USER_DATA = 'SAFE_USER_DATA'

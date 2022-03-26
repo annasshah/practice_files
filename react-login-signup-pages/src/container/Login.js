@@ -1,5 +1,6 @@
 import { Button, CircularProgress, Input, Paper, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { auth,createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged,database, onChildAdded, child, ref, push, update, set, onValue, remove  } from '../firebase'
 
@@ -12,6 +13,7 @@ export const Login = () => {
     const [signupData, setSignupData] = useState({})
     const [loading, setLoading] = useState(true)
 
+    const state = useSelector(state=>state.authReducer)
 
     const setInputData = (e) =>{
         const id = e.target.id
@@ -48,21 +50,17 @@ export const Login = () => {
   }
 
 
+
   useEffect(() => {
-
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-          navigate('/')
-        }
-        else{
-          setLoading(false)
-      }
-    })
-
-
-
-}, [])
+    if(!state.auth){
+      setLoading(state.isLoading)
+    }
+    else{
+      navigate('/')
+    }
+    
+  }, [state])
+  
   
 
 
@@ -75,7 +73,7 @@ export const Login = () => {
       alignItems='center'
       sx={{ minHeight: '90vh' }}
       >
-        {loading ?  <CircularProgress /> :
+        {loading ?  <CircularProgress size={70} /> :
       <Paper
         sx={{ width: '300px', py: 4 }}
         children={<form onSubmit={(e)=>onSubmitHandle(e)}>
@@ -90,6 +88,10 @@ export const Login = () => {
               </Stack>
               <Stack>
                 <Button type='submit'>Login</Button>
+              </Stack>
+
+              <Stack direction='row' spacing={1}>
+               <Typography>Don't have account </Typography> <Typography style={{color:'blue'}} onClick={()=>navigate('/signup')}> Register Now</Typography>
               </Stack>
             
           </Stack></form>
